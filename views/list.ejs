@@ -1,0 +1,72 @@
+<%- include("header") -%>
+  <nav class="navbar navbar-expand-md navbar-light bg-light">
+    <a class="navbar-brand" href="">To Do List</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="newlist">Create New List</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="about">About</a>
+        </li>
+        <li class="nav-item dropdown" style="margin-right: 100px;">
+          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+            Total List
+          </a>
+          <div class="dropdown-menu">
+            <% if(lt) {%>
+            <% lt.forEach(function(title){ %>
+              <% if(title.name!="Favicon.ico"){ %>
+              <a class="dropdown-item" href="<%= title.name %>">
+                <form action="/deletelist" method="post">
+                <input type="checkbox" name="checkbox" value="<%=title._id %>" onchange="this.form.submit()">
+                <%= title.name %>
+                </form>
+              </a>
+              <%}%>
+              <% }) } %>
+              <% if(listtitle) {%>
+             <% listtitle.forEach(function(title){ %>
+              <% if(title.name!="Favicon.ico"){ %>
+              <a class="dropdown-item" href="<%= title.name %>">
+                <form action="/deletelist" method="post">
+                  <input type="checkbox" name="checkbox" value="<%=title._id %>" onchange="this.form.submit()">
+                  <%= title.name %>
+                  </form>
+              </a>
+              <%}%>
+              <% }) } %>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="box" id="heading">
+    <h1>
+      <%= ListTitle %>
+    </h1>
+  </div>
+  <div class="box">
+    <% newListItems.forEach(function(item){%>
+      <form class="item" action="/delete" method="post">
+        <div class="item">
+          <input type="checkbox" name="checkbox" value="<%=item._id %>" onchange="this.form.submit()">
+          <p>
+            <%= item.name %>
+          </p>
+        </div>
+        <input type="hidden" name="listName" value="<%=ListTitle %>"></input>
+      </form>
+      <% })%>
+        <form class="item" action="/" method="post">
+          <input type="text" name="newItem" placeholder="Add new item" autocomplete=off>
+          <button type="submit" name="list" value=<%=ListTitle %>>+</button>
+        </form>
+  </div>
+  <%- include("footer") -%>
