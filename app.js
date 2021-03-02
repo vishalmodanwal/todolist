@@ -1,5 +1,4 @@
 //jshint esversion:6
-require('dotenv').config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
@@ -11,7 +10,7 @@ const _ = require("lodash");
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
-mongoose.connect(process.env.dbURI, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb+srv://admin-vishal:Test123@cluster0.klwhr.mongodb.net/todolistDB',process.env.dbURI, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.set('useFindAndModify', false);
 const itemsSchema = {
   name: String
@@ -47,7 +46,7 @@ let listarray=[];
 app.get("/", function (req, res) {
   
 Item.find({}, function (err, foundItems) {
-  if (foundItems!=null  && foundItems.length === 0) {
+  if (foundItems==null || foundItems.length === 0) {
     Item.insertMany(defaultItems, function (err) {
       if (err) {
         console.log(err);
