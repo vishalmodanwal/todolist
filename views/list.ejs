@@ -20,7 +20,7 @@
             Total List
           </a>
           <div class="dropdown-menu">
-            <% if(lt) {%>
+            <% if(lt!=null) {%>
             <% lt.forEach(function(title){ %>
               <% if(title.name!="Favicon.ico"){ %>
               <a class="dropdown-item" href="<%= title.name %>">
@@ -31,7 +31,7 @@
               </a>
               <%}%>
               <% }) } %>
-              <% if(listtitle) {%>
+              <% if(listtitle!=null) {%>
              <% listtitle.forEach(function(title){ %>
               <% if(title.name!="Favicon.ico"){ %>
               <a class="dropdown-item" href="<%= title.name %>">
