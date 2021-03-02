@@ -53,6 +53,7 @@
     </h1>
   </div>
   <div class="box">
+    <% if(newListItems!=null) {%>
     <% newListItems.forEach(function(item){%>
       <form class="item" action="/delete" method="post">
         <div class="item">
@@ -63,7 +64,7 @@
         </div>
         <input type="hidden" name="listName" value="<%=ListTitle %>"></input>
       </form>
-      <% })%>
+      <% })}%>
         <form class="item" action="/" method="post">
           <input type="text" name="newItem" placeholder="Add new item" autocomplete=off>
           <button type="submit" name="list" value=<%=ListTitle %>>+</button>
