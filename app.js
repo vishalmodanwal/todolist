@@ -10,7 +10,7 @@ const _ = require("lodash");
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
-mongoose.connect('mongodb+srv://admin-vishal:Test123@cluster0.klwhr.mongodb.net/todolistDB',process.env.dbURI, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.dbURI, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.set('useFindAndModify', false);
 const itemsSchema = {
   name: String
