@@ -47,7 +47,7 @@ let listarray=[];
 app.get("/", function (req, res) {
   
 Item.find({}, function (err, foundItems) {
-  if (foundItems.length === 0) {
+  if (foundItems!=null  && foundItems.length === 0) {
     Item.insertMany(defaultItems, function (err) {
       if (err) {
         console.log(err);
