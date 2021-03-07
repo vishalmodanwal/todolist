@@ -20,25 +20,14 @@
             Total List
           </a>
           <div class="dropdown-menu">
-            <% if(lt!=null) {%>
-            <% lt.forEach(function(title){ %>
-              <% if(title.name!="Favicon.ico"){ %>
-              <a class="dropdown-item" href="<%= title.name %>">
+            <% if(lists!=null) {%>
+            <% lists.forEach(function(list){ %>
+              <% if(list.name!="Favicon.ico"){ %>
+              <a class="dropdown-item" href="<%= list.name %>">
                 <form action="/deletelist" method="post">
-                <input type="checkbox" name="checkbox" value="<%=title._id %>" onchange="this.form.submit()">
-                <%= title.name %>
+                <input type="checkbox" name="checkbox" value="<%=list._id %>" onchange="this.form.submit()">
+                <%= list.name%>
                 </form>
-              </a>
-              <%}%>
-              <% }) } %>
-              <% if(listtitle!=null) {%>
-             <% listtitle.forEach(function(title){ %>
-              <% if(title.name!="Favicon.ico"){ %>
-              <a class="dropdown-item" href="<%= title.name %>">
-                <form action="/deletelist" method="post">
-                  <input type="checkbox" name="checkbox" value="<%=title._id %>" onchange="this.form.submit()">
-                  <%= title.name %>
-                  </form>
               </a>
               <%}%>
               <% }) } %>

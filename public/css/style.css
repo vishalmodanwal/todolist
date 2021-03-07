@@ -1,6 +1,6 @@
 body {
     background-color: #E4E9FD;
-    background-image: -webkit-linear-gradient(60deg, #b58dfc 50%, #E4E9FD 50%);
+    background-image: -webkit-linear-gradient(60deg, #8a59df 50%, #E4E9FD 50%);
     min-height: 1000px;
     font-family: 'helvetica neue';
   }
@@ -22,7 +22,7 @@ body {
     background-color:rgba(255, 255, 255, 0.5);
   }
   #heading {
-    background-color: #A683E3;
+    background-color: #8a59df;
     text-align: center;
   }
   
